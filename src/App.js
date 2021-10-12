@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Details from "./components/Details";
+import { useState } from "react";
 
 function App() {
+  const [newName, setNewName] = useState("Bhaskar");
+  const [newBatch, setNewBatch] = useState("Ninja2");
+  const [newOrg, setNewOrg] = useState("Masai School");
+
+  const [btnName, setBtnName] = useState("change to anu")
+
+  const handleChange = () => {
+    if( newName ==="Bhaskar"){
+      setNewName("Anurag Yadav");
+      setNewBatch("B tech C.S");
+      setNewOrg("MIET");
+      setBtnName("Change to bhaskar")
+    }
+    else if(newName==="Anurag Yadav"){
+    setNewName("Bhaskar");
+    setNewBatch("Ninja2");
+    setNewOrg("Masai School");
+    setBtnName("Change to anu")
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Details name={newName} batch={newBatch} organisation={newOrg} />
+      <button onClick={handleChange}>{btnName}</button>
     </div>
   );
 }
